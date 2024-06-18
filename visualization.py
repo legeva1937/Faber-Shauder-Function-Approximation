@@ -35,7 +35,7 @@ def model_test(x, name, min_iter = 1, max_iter = 15, show = True):
     for k_iter in range(min_iter, max_iter):
         model = name_to_params[name][0](k_iter, input_size)
         y_pred = model(x)
-        errors.append(uniform_maximum_error(y_true, y_pred))
+        errors.append(uniform_maximum_error(y_true, y_pred).item())
         #predictions.append(y_pred)
         if show:
             plt.plot(np.sort(x.detach().numpy()), np.sort(y_pred.detach().numpy()), label = "after {} iterations".format(k_iter))
